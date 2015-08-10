@@ -1,0 +1,182 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End reset */
+
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body, h2, p, ul {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+.top-bar, .scoreboard {
+	width: 100%;
+	padding: 1em 0;
+	background-color: rgb(58, 63, 59);
+	color: white;
+	font-family: 'Papyrus', serif;
+}
+
+.top-bar > h2 {
+	margin: 0;
+	display: inline-block;
+}
+
+.top-bar > h2:first-of-type {
+	padding-left: 3em;
+}
+
+.top-bar > h2:last-of-type {
+	float: right;
+	padding-right: 3em;
+}
+
+.main {
+	clear: both;
+	background-color: rgb(65, 157, 94);
+	height: 38em;
+}
+
+#title {
+	padding: 1em 0 0;
+	text-align: center;
+	font-family: 'Papyrus', serif;
+	font-size: 2em;
+	color: white;
+}
+
+#soccer-quiz {
+	width: 90%;
+	height: 30em;
+	border: 3px dashed white;
+	border-radius: 10px;
+	margin: 0 auto;
+	position: relative;
+	top: 30px;
+}
+
+#photo {
+	float: left;
+	width: 33%;
+	height: 382.188px;
+	background-image: url(barzagli.jpg);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 2px solid white;
+	border-radius: 7px;
+	position: relative;
+	top: 2.5em;
+	left: 5em;
+}
+
+#choices {
+	float: right;
+	width: 55%;
+	height: 88%;
+	display: inline-block;
+	position: relative;
+	top: 2.5em;
+}
+
+#choices > ul {
+	height: 100%;
+	list-style-type: none;
+}
+
+#choices > ul > li.answer {
+	width: 60%;
+	height: 2em;
+	padding: 12.5px 0;
+	border: 1px solid white;
+	margin-top: 1em;
+	margin-left: 2em;
+	background-color: white;
+	color: rgb(58, 63, 59);
+	text-align: center;
+	font-size: 1.8em;
+	position: relative;
+}
+
+#choices > ul > li.answer:hover {
+	border: 1px solid rgb(58, 63, 59);
+	background-color: rgb(58, 63, 59);
+	color: white;
+}
+
+#choices a {
+	text-decoration: none;
+	color: rgb(58, 63, 59);
+}
+
+#choices a:hover {
+	color: white;
+}
+
+.scoreboard { 
+	text-align: center;
+	background-color: rgb(65, 157, 94);
+}
+
+.scoreboard .trophy {
+	display: inline-block;
+	margin-right: 1em;
+}
