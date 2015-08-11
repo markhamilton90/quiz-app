@@ -39,21 +39,16 @@ $('document').ready(function(){
 
 	getCorrectAnswer(rightAnswer);
 
-	$('.answer').click(function(){
+	$('.answer').on("click", function(){
 		if (this.innerHTML == correctAnswerText){
 			guessedRight($(this));
 		} else {
 			guessedWrong($(this));
 		}
-		
-		
-		/*$('.answer').not(correctAnswer).animate({
-			opacity: 1, left: "-=50"}, 1000, function(){
-			});*/
-		//$('.answer').bind('click', revealAnswer);
 	});
 
 	function guessedRight(userAnswer) {
+		//$('.answer').off();
 		userAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
 		$('.answer').not(userAnswer).animate({
 			opacity: 0,
