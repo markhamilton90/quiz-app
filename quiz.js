@@ -1,64 +1,128 @@
 $('document').ready(function(){
 
-	/* User clicks answer, answers fade away and then appear again
-	with new text content, populated by the array values in quiz.
-	Plan on making this more modular */
-
-	$('.answer').click(function(){
-		if (this.id == 'correct'){
-			console.log('You guessed the correct answer! ' + this.innerHTML);
-			$('.answer').not(rightAnswer).fadeOut(1000);
-			rightAnswer.css('background-color', 'rgb(0, 207, 0)');
-			trophy.css('color', 'rgb(0, 255, 0)');
-			trophy = trophy.next();
-			isClicked = true;
-		} else {
-			$(this).css('background-color', 'red');
-			rightAnswer.css('background-color', 'rgb(0, 207, 0)');
-			trophy.css('color', 'red');
-			trophy = trophy.next();
-		}
-		/* Having trouble here; instead of populating li elements immediately,
-		I want to wait for the full delay and then populate them while hidden */
-		$('.answer').delay(3000).hide(0);
-		round++;
-		populate(round);
-		$('.answer').delay(1000).show(0);
-	});
-
-	var quiz = [{
-		answers: ["Antonio Cassano", "Mesut Ozil", "Andrea Barzagli", "Gogo Pirlo"],
-	}, {
-		answers: ["Antonio Cassano", "Mesut Ozil", "HEY Barzagli", "Andrea Pirlo"],
-	}, {
-		answers: ["Antonio Cassano", "Ronaldo", "Andrea Barzagli", "Andrea Pirlo"],
-	}, {
-		answers: ["Antonio Cassano", "Mesut Ozil", "Joe Barzagli", "Andrea Pirlo"],
-	}, {
-		answers: ["Antonio Cassano", "Mesut Ozil", "Andrea Barzagli", "Andrea Pichu"],
-	}];
-
+	var answerElements = $('li.answer');
+	var rightAnswer = "Andrea Barzagli";
 	var answer = $('.answer:first');
-	var rightAnswer = $('#correct');
+	var correctAnswerText;
+	var correctAnswer;
+	var round = 0;
 	var correct = 0;
 	var incorrect = 0;
-	var round = 0;
+	var photo = $('#photo');
 	var trophy = $('.trophy:first');
-	var isClicked = false;
+
+	var quiz = [{
+		answers: ["Antonio Cassano", "Mesut Ozil", "Andrea Barzagli", "Andrea Pirlo"],
+		correct: "Andrea Barzagli",
+		image: "barzagli.jpg"
+	},
+	{
+		answers: ["Robin van Persie", "Marco Reus", "Sergio Busquets", "Wayne Rooney"],
+		correct: "Robin van Persie",
+		image: "vanpersie.jpg"
+	}, 
+	{
+		answers: ["Mario Balotelli", "James Rodriguez", "Cristiano Ronaldo", "Lionel Messi"],
+		correct: "Lionel Messi",
+		image: "messi.jpg"
+	}, 
+	{
+		answers: ["Paul Pogba", "Michael Carrick", "Blaise Matuidi", "Erik Lamela"],
+		correct: "Paul Pogba",
+		image: "pogba.jpg"
+	}, 
+	{
+		answers: ["Theo Walcott", "Javier Pastore", "Zlatan Ibrahimovic", "Gianluigi Buffon"],
+		correct: "Zlatan Ibrahimovic",
+		image: "ibrahimovic.jpg"
+	}];
+
+	getCorrectAnswer(rightAnswer);
+
+	$('.answer').click(function(){
+		if (this.innerHTML == correctAnswerText){
+			guessedRight($(this));
+		} else {
+			guessedWrong($(this));
+		}
+		
+		
+		/*$('.answer').not(correctAnswer).animate({
+			opacity: 1, left: "-=50"}, 1000, function(){
+			});*/
+		//$('.answer').bind('click', revealAnswer);
+	});
+
+	function guessedRight(userAnswer) {
+		userAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
+		$('.answer').not(userAnswer).animate({
+			opacity: 0,
+			left: "+=50"
+		}, 1000, function(){
+			console.log(round);
+			if (round < 5)
+				populate(round);
+			$('.answer').css({'background-color': '', 'border': ''});
+			$('.answer:hover').css({'background-color': '',
+				'border': ''});
+		});
+		round++;
+		trophy.css('color', '#00eb00');
+		trophy = trophy.next();
+		if (round < 5) {
+			$('.answer').not(userAnswer).animate({
+				opacity: 1,
+				left: "-=50"
+			}, 1000, function(){});
+		}
+	}
+
+	function guessedWrong(userAnswer) {
+		userAnswer.css({'background-color': '#ff0b00', 'border': '#ff0b00'});
+		correctAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
+		$('.answer').not(correctAnswer).animate({
+			opacity: 0,
+			left: "+=50"
+		}, 1000, function(){
+			if (round < 5)
+				populate(round);
+			$('.answer').css({'background-color': '', 'border': ''});
+			$('.answer:hover').css({'background-color': '',
+				'border': ''});
+		});
+		trophy.css('color', '#ff0b00');
+		trophy = trophy.next();
+		round++;
+		if (round < 5) {
+			$('.answer').not(correctAnswer).animate({
+				opacity: 1,
+				left: "-=50"
+			}, 1000, function(){});
+		}
+	}
+
+	function getCorrectAnswer(correcto) {
+		for (var i = 0; i < answerElements.length; i++){
+			if (answerElements.eq(i).text() == correcto){
+				correctAnswerText = answerElements.eq(i).text();
+				correctAnswer = answerElements.eq(i);
+			}
+			else
+				continue;
+		}
+	}
 
 	/* Populate the selectable list items with new answers for each round */
 	function populate(round) {
 		answer = $('.answer:first');
+		rightAnswer = quiz[round].correct;
+		photo.css('background-image', 'url(' + quiz[round].image + ')');
 		for (var i = 0; i < quiz[round].answers.length; i++) {
 			answer.text(quiz[round].answers[i]);
 			answer = answer.next();
 		}
-	}
-
-	/* Move to the next list of elements to be populated 
-	   Might not end up using this though */
-	function nextList(round) {
-		populate(round);
+		getCorrectAnswer(rightAnswer);
+		return console.log(rightAnswer);
 	}
 
 });
