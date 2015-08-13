@@ -150,7 +150,7 @@ $('document').ready(function(){
 		$('#scoresheet').hide();
 		$('.answer').off();
 		$('.trophy').css('color', '');
-		document.getElementById('#scoresheet').innerHTML = '<p class="fa fa-trophy fa-5x"></p>';
+		document.getElementById('scoresheet').innerHTML = '<p class="fa fa-trophy fa-5x"></p>';
 
 		getCorrectAnswer(rightAnswer);
 		populate(round);
