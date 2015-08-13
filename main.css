@@ -87,6 +87,7 @@ h2 {
 .top-bar > h2:last-of-type {
 	float: right;
 	padding-right: 3em;
+	cursor: pointer;
 }
 
 .main {
@@ -151,6 +152,7 @@ h2 {
 	margin-left: 2em;
 	background-color: white;
 	color: rgb(58, 63, 59);
+	cursor: pointer;
 	text-align: center;
 	font-size: 1.8em;
 	position: relative;
@@ -169,6 +171,33 @@ h2 {
 
 #choices a:hover {
 	color: white;
+}
+
+#scoresheet {
+	display: none;
+	position: absolute;
+	width: 20em;
+	height: 20em;
+	border: 1px solid white;
+	border-radius: 50%;
+	margin: 0 auto;
+	font-family: 'Arial', sans-serif;
+	color: rgb(58, 63, 59);
+	background-color: white;
+	top: 100px;
+	left: 400px;
+}
+
+#scoresheet p {
+	color: #ffc700;
+	padding: 30px 122.857px 0;
+}
+
+#scoresheet h1 {
+	font-size: 1.5em;
+	padding: 20px 50px;
+	line-height: 1.55em;
+	text-align: center;
 }
 
 .scoreboard { 
