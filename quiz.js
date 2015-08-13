@@ -10,6 +10,8 @@ $('document').ready(function(){
 	var incorrect = 0;
 	var photo = $('#photo');
 	var trophy = $('.trophy:first');
+	var isClickable = true;
+	var scoresheet = false;
 
 	var quiz = [{
 		answers: ["Antonio Cassano", "Mesut Ozil", "Andrea Barzagli", "Andrea Pirlo"],
@@ -39,16 +41,20 @@ $('document').ready(function(){
 
 	getCorrectAnswer(rightAnswer);
 
-	$('.answer').on("click", function(){
+	// determine how to animate li elements after user clicks on one
+	function guessAnswer() {
 		if (this.innerHTML == correctAnswerText){
 			guessedRight($(this));
 		} else {
 			guessedWrong($(this));
 		}
-	});
+	}
+
+	$('.answer').on("click", guessAnswer); 
 
 	function guessedRight(userAnswer) {
-		//$('.answer').off();
+		$('.answer').off();
+		isClickable = false;
 		userAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
 		$('.answer').not(userAnswer).animate({
 			opacity: 0,
@@ -62,17 +68,29 @@ $('document').ready(function(){
 				'border': ''});
 		});
 		round++;
+		correct++;
 		trophy.css('color', '#00eb00');
 		trophy = trophy.next();
 		if (round < 5) {
 			$('.answer').not(userAnswer).animate({
 				opacity: 1,
 				left: "-=50"
-			}, 1000, function(){});
+			}, 1000, function(){
+				if (isClickable == false){
+					$('.answer').on("click", guessAnswer);
+					isClickable = true;
+					console.log("Now clickable?");
+				}
+			});
+		}
+		else {
+			winningMsg();
 		}
 	}
 
 	function guessedWrong(userAnswer) {
+		$('.answer').off();
+		isClickable = false;
 		userAnswer.css({'background-color': '#ff0b00', 'border': '#ff0b00'});
 		correctAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
 		$('.answer').not(correctAnswer).animate({
@@ -92,7 +110,57 @@ $('document').ready(function(){
 			$('.answer').not(correctAnswer).animate({
 				opacity: 1,
 				left: "-=50"
-			}, 1000, function(){});
+			}, 1000, function(){
+				if (isClickable == false){
+					$('.answer').on("click", guessAnswer);
+					isClickable = true;
+					console.log("Now clickable?");
+				}
+			});
+		}
+		else
+			winningMsg();
+	}
+
+	function winningMsg() {
+		var msg = "";
+		if (correct <= 2) {
+			msg = "<h1>You only answered " + correct + " questions correctly. Too bad...</h1>";
+			$('#scoresheet p').css('color', '#ff0b00');
+		} else if (correct <= 4)
+			msg = "<h1>You answered " + correct + " questions correctly! Good job!</h1>";
+		else if (correct = 5)
+			msg = "<h1>Golaso! You answered all 5 questions correctly!</h1>";
+		document.getElementById('scoresheet').innerHTML += msg;
+		$('#scoresheet').show();
+		scoresheet = true;
+	}
+
+	$('#newgame').on('click', newGame);
+
+	function newGame() {
+		rightAnswer = "Andrea Barzagli";
+		answer = $('.answer:first');
+		round = 0;
+		correct = 0;
+		incorrect = 0;
+		photo = $('#photo');
+		trophy = $('.trophy:first');
+		isClickable = true;
+		$('#scoresheet').hide();
+		$('.answer').off();
+		$('.trophy').css('color', '');
+		document.getElementById('scoresheet').innerHTML = '<p class="fa fa-trophy fa-5x"></p>';
+
+		getCorrectAnswer(rightAnswer);
+		populate(round);
+		$('.answer').on("click", guessAnswer);
+
+		if (scoresheet == true) {
+			$('.answer').not(correctAnswer).animate({
+				'left': '-=50', 'opacity': '1'
+			}, 1000);
+			scoresheet = false;
 		}
 	}
 
