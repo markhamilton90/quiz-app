@@ -1,14 +1,13 @@
 $('document').ready(function(){
 
-	var answerElements = $('li.answer');
+	// declare global variables
+
+	var answers = $('.answer');
 	var rightAnswer = "Andrea Barzagli";
-	var answer = $('.answer:first');
-	var correctAnswerText;
 	var correctAnswer;
+	var correctAnswerText;
 	var round = 0;
 	var correct = 0;
-	var incorrect = 0;
-	var photo = $('#photo');
 	var trophy = $('.trophy:first');
 	var isClickable = true;
 	var scoresheet = false;
@@ -38,32 +37,49 @@ $('document').ready(function(){
 		correct: "Zlatan Ibrahimovic",
 		image: "ibrahimovic.jpg"
 	}];
+	
+	
+	// main game
 
 	getCorrectAnswer(rightAnswer);
+	answers.on("click", guessAnswer);
+	$('#newgame').on('click', newGame);
+	
 
 	// determine how to animate li elements after user clicks on one
+<<<<<<< HEAD
+=======
+	
+>>>>>>> gh-pages
 	function guessAnswer() {
 		if (this.innerHTML == correctAnswerText){
 			guessedRight($(this));
 		} else {
 			guessedWrong($(this));
 		}
+<<<<<<< HEAD
 	}
 
 	$('.answer').on("click", guessAnswer); 
 
 	function guessedRight(userAnswer) {
 		$('.answer').off();
+=======
+	} 
+
+	function guessedRight(userAnswer) {
+		answers.off();
+>>>>>>> gh-pages
 		isClickable = false;
 		userAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
-		$('.answer').not(userAnswer).animate({
+		answers.not(userAnswer).animate({
 			opacity: 0,
 			left: "+=50"
 		}, 1000, function(){
 			console.log(round);
 			if (round < 5)
 				populate(round);
-			$('.answer').css({'background-color': '', 'border': ''});
+			answers.css({'background-color': '', 'border': ''});
 			$('.answer:hover').css({'background-color': '',
 				'border': ''});
 		});
@@ -72,12 +88,16 @@ $('document').ready(function(){
 		trophy.css('color', '#00eb00');
 		trophy = trophy.next();
 		if (round < 5) {
-			$('.answer').not(userAnswer).animate({
+			answers.not(userAnswer).animate({
 				opacity: 1,
 				left: "-=50"
 			}, 1000, function(){
 				if (isClickable == false){
+<<<<<<< HEAD
 					$('.answer').on("click", guessAnswer);
+=======
+					answers.on("click", guessAnswer);
+>>>>>>> gh-pages
 					isClickable = true;
 					console.log("Now clickable?");
 				}
@@ -89,30 +109,40 @@ $('document').ready(function(){
 	}
 
 	function guessedWrong(userAnswer) {
+<<<<<<< HEAD
 		$('.answer').off();
 		isClickable = false;
 		userAnswer.css({'background-color': '#ff0b00', 'border': '#ff0b00'});
+=======
+		answers.off();
+		isClickable = false;
+		userAnswer.css({'background-color': '#ff3000', 'border': '#ff3000'});
+>>>>>>> gh-pages
 		correctAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
-		$('.answer').not(correctAnswer).animate({
+		answers.not(correctAnswer).animate({
 			opacity: 0,
 			left: "+=50"
 		}, 1000, function(){
 			if (round < 5)
 				populate(round);
-			$('.answer').css({'background-color': '', 'border': ''});
+			answers.css({'background-color': '', 'border': ''});
 			$('.answer:hover').css({'background-color': '',
 				'border': ''});
 		});
-		trophy.css('color', '#ff0b00');
+		trophy.css('color', '#ff3000');
 		trophy = trophy.next();
 		round++;
 		if (round < 5) {
-			$('.answer').not(correctAnswer).animate({
+			answers.not(correctAnswer).animate({
 				opacity: 1,
 				left: "-=50"
 			}, 1000, function(){
 				if (isClickable == false){
+<<<<<<< HEAD
 					$('.answer').on("click", guessAnswer);
+=======
+					answers.on("click", guessAnswer);
+>>>>>>> gh-pages
 					isClickable = true;
 					console.log("Now clickable?");
 				}
@@ -122,12 +152,22 @@ $('document').ready(function(){
 			winningMsg();
 	}
 
+<<<<<<< HEAD
+=======
+	// message to be printed at end of game, depending on score
+	
+>>>>>>> gh-pages
 	function winningMsg() {
 		var msg = "";
 		if (correct <= 2) {
 			msg = "<h1>You only answered " + correct + " questions correctly. Too bad...</h1>";
 			$('#scoresheet p').css('color', '#ff0b00');
+<<<<<<< HEAD
 		} else if (correct <= 4)
+=======
+		} 
+		else if (correct <= 4)
+>>>>>>> gh-pages
 			msg = "<h1>You answered " + correct + " questions correctly! Good job!</h1>";
 		else if (correct = 5)
 			msg = "<h1>Golaso! You answered all 5 questions correctly!</h1>";
@@ -136,6 +176,7 @@ $('document').ready(function(){
 		scoresheet = true;
 	}
 
+<<<<<<< HEAD
 	$('#newgame').on('click', newGame);
 
 	function newGame() {
@@ -149,35 +190,57 @@ $('document').ready(function(){
 		isClickable = true;
 		$('#scoresheet').hide();
 		$('.answer').off();
+=======
+	function newGame() {
+		rightAnswer = "Andrea Barzagli";
+		round = 0;
+		correct = 0;
+		trophy = $('.trophy:first');
+		isClickable = true;
+		$('#scoresheet').hide();
+		answers.off();
+>>>>>>> gh-pages
 		$('.trophy').css('color', '');
 		document.getElementById('scoresheet').innerHTML = '<p class="fa fa-trophy fa-5x"></p>';
 
 		getCorrectAnswer(rightAnswer);
 		populate(round);
+<<<<<<< HEAD
 		$('.answer').on("click", guessAnswer);
 
 		if (scoresheet == true) {
 			$('.answer').not(correctAnswer).animate({
+=======
+		answers.on("click", guessAnswer);
+
+		if (scoresheet == true) {
+			answers.not(correctAnswer).animate({
+>>>>>>> gh-pages
 				'left': '-=50', 'opacity': '1'
 			}, 1000);
 			scoresheet = false;
 		}
 	}
+	
+	// loop through li elements until arg matches correct answer
 
 	function getCorrectAnswer(correcto) {
-		for (var i = 0; i < answerElements.length; i++){
-			if (answerElements.eq(i).text() == correcto){
-				correctAnswerText = answerElements.eq(i).text();
-				correctAnswer = answerElements.eq(i);
+		for (var i = 0; i < answers.length; i++){
+			if (answers.eq(i).text() == correcto){
+				correctAnswerText = answers.eq(i).text();
+				correctAnswer = answers.eq(i);
 			}
 			else
 				continue;
 		}
 	}
 
-	/* Populate the selectable list items with new answers for each round */
+	// Populate the selectable list items with new answers for each round,
+	// get correct player photo and text for the right answer
+	
 	function populate(round) {
-		answer = $('.answer:first');
+		var answer = $('.answer:first');
+		var photo = $('#photo');
 		rightAnswer = quiz[round].correct;
 		photo.css('background-image', 'url(' + quiz[round].image + ')');
 		for (var i = 0; i < quiz[round].answers.length; i++) {
@@ -185,7 +248,6 @@ $('document').ready(function(){
 			answer = answer.next();
 		}
 		getCorrectAnswer(rightAnswer);
-		return console.log(rightAnswer);
 	}
 
 });

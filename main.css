@@ -67,7 +67,7 @@ h2 {
 	font-size: 1.5em;
 }
 
-.top-bar, .scoreboard {
+.top-bar {
 	width: 100%;
 	padding: 1em 0;
 	background-color: rgb(58, 63, 59);
@@ -97,14 +97,17 @@ h2 {
 }
 
 #title {
-	padding: 1em 0 0;
-	text-align: center;
+	width: 0%;
+	float: left;
+	padding: 1em 0 0 3em;
+	text-align: left;
 	font-family: 'Papyrus', serif;
-	font-size: 2em;
+	font-size: 1.7em;
 	color: white;
 }
 
 #soccer-quiz {
+	clear: both;
 	width: 90%;
 	height: 30em;
 	border: 3px dashed white;
@@ -152,6 +155,7 @@ h2 {
 	margin-left: 2em;
 	background-color: white;
 	color: rgb(58, 63, 59);
+	cursor: pointer;
 	text-align: center;
 	font-size: 1.8em;
 	position: relative;
@@ -175,6 +179,7 @@ h2 {
 #scoresheet {
 	display: none;
 	position: absolute;
+<<<<<<< HEAD
 	background-color: white;
 	color: rgb(58, 63, 59);
 	width: 20em;
@@ -190,18 +195,45 @@ h2 {
 	display: inline-block;
     padding: 30px 122.857px 0;
     color: #ffd300;
+=======
+	width: 20em;
+	height: 20em;
+	border: 1px solid white;
+	border-radius: 50%;
+	margin: 0 auto;
+	font-family: 'Arial', sans-serif;
+	color: rgb(58, 63, 59);
+	background-color: white;
+	top: 100px;
+	left: 400px;
+}
+
+#scoresheet p {
+	color: #ffc700;
+	padding: 30px 122.857px 0;
+>>>>>>> gh-pages
 }
 
 #scoresheet h1 {
 	font-size: 1.5em;
+<<<<<<< HEAD
     padding: 20px 50px;
     line-height: 1.55em;
     text-align: center;
+=======
+	padding: 20px 50px;
+	line-height: 1.55em;
+	text-align: center;
+>>>>>>> gh-pages
 }
 
 .scoreboard { 
+	width: 100%;
+	float: right;
+	padding: 2em 0 0;
 	text-align: center;
 	background-color: rgb(65, 157, 94);
+	color: white;
 }
 
 .scoreboard .trophy {
