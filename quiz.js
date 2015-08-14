@@ -181,6 +181,7 @@ $('document').ready(function(){
 
 	// Populate the selectable list items with new answers for each round,
 	// get correct player photo and text for the right answer
+	//
 	
 	function populate(round) {
 		var answer = $('.answer:first');
