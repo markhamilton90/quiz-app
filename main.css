@@ -67,7 +67,7 @@ h2 {
 	font-size: 1.5em;
 }
 
-.top-bar, .scoreboard {
+.top-bar {
 	width: 100%;
 	padding: 1em 0;
 	background-color: rgb(58, 63, 59);
@@ -97,14 +97,17 @@ h2 {
 }
 
 #title {
-	padding: 1em 0 0;
-	text-align: center;
+	width: 0%;
+	float: left;
+	padding: 1em 0 0 3em;
+	text-align: left;
 	font-family: 'Papyrus', serif;
-	font-size: 2em;
+	font-size: 1.7em;
 	color: white;
 }
 
 #soccer-quiz {
+	clear: both;
 	width: 90%;
 	height: 30em;
 	border: 3px dashed white;
@@ -201,8 +204,12 @@ h2 {
 }
 
 .scoreboard { 
+	width: 100%;
+	float: right;
+	padding: 2em 0 0;
 	text-align: center;
 	background-color: rgb(65, 157, 94);
+	color: white;
 }
 
 .scoreboard .trophy {
