@@ -47,29 +47,17 @@ $('document').ready(function(){
 	
 
 	// determine how to animate li elements after user clicks on one
-<<<<<<< HEAD
-=======
 	
->>>>>>> gh-pages
 	function guessAnswer() {
 		if (this.innerHTML == correctAnswerText){
 			guessedRight($(this));
 		} else {
 			guessedWrong($(this));
 		}
-<<<<<<< HEAD
-	}
-
-	$('.answer').on("click", guessAnswer); 
-
-	function guessedRight(userAnswer) {
-		$('.answer').off();
-=======
 	} 
 
 	function guessedRight(userAnswer) {
 		answers.off();
->>>>>>> gh-pages
 		isClickable = false;
 		userAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
 		answers.not(userAnswer).animate({
@@ -93,11 +81,7 @@ $('document').ready(function(){
 				left: "-=50"
 			}, 1000, function(){
 				if (isClickable == false){
-<<<<<<< HEAD
-					$('.answer').on("click", guessAnswer);
-=======
 					answers.on("click", guessAnswer);
->>>>>>> gh-pages
 					isClickable = true;
 					console.log("Now clickable?");
 				}
@@ -109,15 +93,9 @@ $('document').ready(function(){
 	}
 
 	function guessedWrong(userAnswer) {
-<<<<<<< HEAD
-		$('.answer').off();
-		isClickable = false;
-		userAnswer.css({'background-color': '#ff0b00', 'border': '#ff0b00'});
-=======
 		answers.off();
 		isClickable = false;
 		userAnswer.css({'background-color': '#ff3000', 'border': '#ff3000'});
->>>>>>> gh-pages
 		correctAnswer.css({'background-color': '#00eb00', 'border': '#00eb00'});
 		answers.not(correctAnswer).animate({
 			opacity: 0,
@@ -138,11 +116,7 @@ $('document').ready(function(){
 				left: "-=50"
 			}, 1000, function(){
 				if (isClickable == false){
-<<<<<<< HEAD
-					$('.answer').on("click", guessAnswer);
-=======
 					answers.on("click", guessAnswer);
->>>>>>> gh-pages
 					isClickable = true;
 					console.log("Now clickable?");
 				}
@@ -152,22 +126,15 @@ $('document').ready(function(){
 			winningMsg();
 	}
 
-<<<<<<< HEAD
-=======
 	// message to be printed at end of game, depending on score
 	
->>>>>>> gh-pages
 	function winningMsg() {
 		var msg = "";
 		if (correct <= 2) {
 			msg = "<h1>You only answered " + correct + " questions correctly. Too bad...</h1>";
 			$('#scoresheet p').css('color', '#ff0b00');
-<<<<<<< HEAD
-		} else if (correct <= 4)
-=======
 		} 
 		else if (correct <= 4)
->>>>>>> gh-pages
 			msg = "<h1>You answered " + correct + " questions correctly! Good job!</h1>";
 		else if (correct = 5)
 			msg = "<h1>Golaso! You answered all 5 questions correctly!</h1>";
@@ -176,21 +143,6 @@ $('document').ready(function(){
 		scoresheet = true;
 	}
 
-<<<<<<< HEAD
-	$('#newgame').on('click', newGame);
-
-	function newGame() {
-		rightAnswer = "Andrea Barzagli";
-		answer = $('.answer:first');
-		round = 0;
-		correct = 0;
-		incorrect = 0;
-		photo = $('#photo');
-		trophy = $('.trophy:first');
-		isClickable = true;
-		$('#scoresheet').hide();
-		$('.answer').off();
-=======
 	function newGame() {
 		rightAnswer = "Andrea Barzagli";
 		round = 0;
@@ -199,23 +151,15 @@ $('document').ready(function(){
 		isClickable = true;
 		$('#scoresheet').hide();
 		answers.off();
->>>>>>> gh-pages
 		$('.trophy').css('color', '');
 		document.getElementById('scoresheet').innerHTML = '<p class="fa fa-trophy fa-5x"></p>';
 
 		getCorrectAnswer(rightAnswer);
 		populate(round);
-<<<<<<< HEAD
-		$('.answer').on("click", guessAnswer);
-
-		if (scoresheet == true) {
-			$('.answer').not(correctAnswer).animate({
-=======
 		answers.on("click", guessAnswer);
 
 		if (scoresheet == true) {
 			answers.not(correctAnswer).animate({
->>>>>>> gh-pages
 				'left': '-=50', 'opacity': '1'
 			}, 1000);
 			scoresheet = false;

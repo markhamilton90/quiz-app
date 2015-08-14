@@ -179,7 +179,6 @@ h2 {
 #scoresheet {
 	display: none;
 	position: absolute;
-<<<<<<< HEAD
 	background-color: white;
 	color: rgb(58, 63, 59);
 	width: 20em;
@@ -195,7 +194,6 @@ h2 {
 	display: inline-block;
     padding: 30px 122.857px 0;
     color: #ffd300;
-=======
 	width: 20em;
 	height: 20em;
 	border: 1px solid white;
@@ -211,20 +209,16 @@ h2 {
 #scoresheet p {
 	color: #ffc700;
 	padding: 30px 122.857px 0;
->>>>>>> gh-pages
 }
 
 #scoresheet h1 {
 	font-size: 1.5em;
-<<<<<<< HEAD
     padding: 20px 50px;
     line-height: 1.55em;
     text-align: center;
-=======
 	padding: 20px 50px;
 	line-height: 1.55em;
 	text-align: center;
->>>>>>> gh-pages
 }
 
 .scoreboard { 
