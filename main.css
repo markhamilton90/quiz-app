@@ -47,7 +47,7 @@ table {
 	border-spacing: 0;
 }
 
-/* End reset */
+/*, End reset */
 
 
 html {
@@ -176,11 +176,35 @@ h2 {
 	color: white;
 }
 
+.background {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(58, 63, 59, 0.7);
+}
+
 #scoresheet {
 	display: none;
 	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
 	width: 20em;
 	height: 20em;
+	color: rgb(58, 63, 59);
+	background-color: white;
+	font-family: 'Arial', sans-serif;
+	text-align: center;
+}
+
+#scoresheet p {
+	display: inline-block;
+    padding: 30px 122.857px 0;
 	border: 1px solid white;
 	border-radius: 50%;
 	margin: 0 auto;
@@ -191,13 +215,15 @@ h2 {
 	left: 400px;
 }
 
-#scoresheet p {
-	color: #ffc700;
-	padding: 30px 122.857px 0;
+#scoresheet i {
+	color: #ffd300;
 }
 
 #scoresheet h1 {
 	font-size: 1.5em;
+    padding: 20px 50px;
+    line-height: 1.55em;
+    text-align: center;
 	padding: 20px 50px;
 	line-height: 1.55em;
 	text-align: center;
